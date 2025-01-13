@@ -18,13 +18,19 @@ const IndividualResultsTable = ({ results }) => {
             <tr key={result._id}>
               <td className="border border-gray-300 p-2">{result.item}</td>
               <td className="border border-gray-300 p-2">
-                {result.first.map((pos) => pos.name).join(", ")}
+                {result.first
+                  .map((pos) => `${pos.name} - ${pos.section.code}`)
+                  .join(", ")}
               </td>
               <td className="border border-gray-300 p-2">
-                {result.second.map((pos) => pos.name).join(", ")}
+                {result.second
+                  .map((pos) => `${pos.name} - ${pos.section.code}`)
+                  .join(", ")}
               </td>
               <td className="border border-gray-300 p-2">
-                {result.third.map((pos) => pos.name).join(", ")}
+                {result.third
+                  .map((pos) => `${pos.name} - ${pos.section.code}`)
+                  .join(", ")}
               </td>
             </tr>
           ))}

@@ -37,8 +37,12 @@ const EventManagement = () => {
     if (image) formData.append("image", image);
 
     try {
+
+      const token = localStorage.getItem("token");
       await axios.post(`${import.meta.env.VITE_API_URL}/api/events`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
+        headers: { 'Content-Type': 'multipart/form-data',
+          'x-auth-token': token, // Add the token to the header
+         },
       });
       fetchEvents();  // Refresh the event list
       setEventName('');

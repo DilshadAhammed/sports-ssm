@@ -25,6 +25,7 @@ const ResultForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const token = localStorage.getItem("token");
       const resultData = {
         event: eventId,
         item,
@@ -35,7 +36,11 @@ const ResultForm = () => {
         status,
         isGroup, // send isGroup in the data
       };
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/results`, resultData);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/results`, resultData,{
+        header: {
+        'x-auth-token': token, 
+        }
+      });
       setMessage(response.data.message);
       setError("");
     } catch (error) {

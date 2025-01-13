@@ -16,7 +16,7 @@ router.get("/:eventId", async (req, res) => {
     results.forEach((result) => {
       // Define point values for individual and group items
       const pointValues = result.isGroup
-        ? { first: 10, second: 5, third: 3 }
+        ? { first: 10, second: 6, third: 2 }
         : { first: 5, second: 3, third: 1 };
 
       // Count points for 1st positions

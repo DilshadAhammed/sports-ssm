@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import IndividualResultsTable from "../components/IndividualResultsTable";
 import GroupResultsTable from "../components/GroupResultsTable";
-import ssmlogo from "../assets/ssmlogo.png";
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 
 const ItemsLeaderboard = () => {
@@ -36,17 +37,7 @@ const ItemsLeaderboard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-neutral-950 to-red-900 flex flex-col text-white">
-      {/* Header */}
-      <header className="flex flex-col lg:flex-row justify-between items-center py-6 px-4 lg:px-20 text-lg font-bold space-y-4 lg:space-y-0">
-        <nav className="flex space-x-8">
-          <Link to="/" className="hover:text-yellow-500">
-            Home
-          </Link>
-          <Link  className="hover:text-yellow-500">
-            Programs
-          </Link>
-        </nav>
-      </header>
+      <NavBar/>
 
       {/* Individual Results Table */}
       <div className="px-4 lg:px-20 flex-grow">
@@ -66,34 +57,7 @@ const ItemsLeaderboard = () => {
           </div>
         )}
       </div>
-
-      {/* Footer */}
-      <footer className="bg-[#411313] py-10 px-6 lg:px-20 mt-10">
-        <div className="flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0">
-          {/* Left Section */}
-          <div className="text-center lg:text-left">
-            <div className="flex items-center justify-center lg:justify-start space-x-4">
-              <img src={ssmlogo} alt="SSM Logo" className="h-12" />
-              <h2 className="text-lg font-bold leading-tight">
-                SEETHI SAHIB MEMORIAL
-                <br /> POLYTECHNIC COLLEGE TIRUR
-              </h2>
-            </div>
-            <p className="text-sm mt-2">
-              <i className="fas fa-phone mr-2"></i>Phone: +91 494-2422234
-            </p>
-            <p className="text-sm">
-              <i className="fas fa-envelope mr-2"></i>Email: ssmtirur@gmail.com
-            </p>
-          </div>
-
-          {/* Right Section */}
-          <div className="text-center lg:text-right">
-            <p className="text-sm">Powered by</p>
-            <h2 className="text-lg font-bold">COMPUTER ENGINEERING</h2>
-          </div>
-        </div>
-      </footer>
+        <Footer />
     </div>
   );
 };

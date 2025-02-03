@@ -24,24 +24,35 @@ const ResultForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Ensure that all positions have a valid section
+    const validatePositions = (positions) =>
+      positions.filter(p => p.section !== "");
+  
     try {
       const token = localStorage.getItem("token");
       const resultData = {
         event: eventId,
         item,
         category,
-        first,
-        second,
-        third,
+        first: validatePositions(first),
+        second: validatePositions(second),
+        third: validatePositions(third),
         status,
-        isGroup, // send isGroup in the data
+        isGroup,
       };
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/results`, resultData,{
-        headers: { 
-          "Content-Type": "application/json",
-          'x-auth-token': token, // Add the token to the header
-         },
-      });
+  
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/results`, 
+        resultData, 
+        {
+          headers: { 
+            "Content-Type": "application/json",
+            'x-auth-token': token,
+          },
+        }
+      );
+  
       setMessage(response.data.message);
       setError("");
     } catch (error) {

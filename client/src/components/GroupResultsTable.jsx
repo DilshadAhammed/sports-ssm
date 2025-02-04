@@ -15,9 +15,9 @@ const GroupResultsTable = ({ results }) => {
           {results.map((result) => (
             <tr key={result._id} className="border border-white/10 bg-black/10 backdrop-blur-3xl">
               <td className="px-6 py-4 font-medium">{result.item}</td>
-              <td className="px-6 py-4">{result.first[0]?.section.name || "-"}</td>
-              <td className="px-6 py-4">{result.second[0]?.section.name || "-"}</td>
-              <td className="px-6 py-4">{result.third[0]?.section.name || "-"}</td>
+              <td className="px-6 py-4">{result.first.map((pos) => pos.section.name).join(", ") || "-"}</td>
+              <td className="px-6 py-4">{result.second.map((pos) => pos.section.name).join(", ") || "-"}</td>
+              <td className="px-6 py-4">{result.third.map((pos) => pos.section.name).join(", ") || "-"}</td>
             </tr>
           ))}
         </tbody>

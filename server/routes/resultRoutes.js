@@ -20,7 +20,9 @@ router.get('/:eventId', async (req, res) => {
     // Fetch results for the event
     const results = await Result.find({ event: eventId })
       .populate('first.section second.section third.section') // Assuming you have populated data for sections
-      .sort({ createdAt: -1 }); // Sort by date, if applicable
+      .sort({ _id: -1 }); // Sort by date, if applicable
+
+    
 
     if (results.length === 0) {
       return res.status(404).json({ message: 'No results found for this event' });
